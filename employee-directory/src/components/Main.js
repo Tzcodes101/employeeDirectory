@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import "./App.css";
-import API from "./utils/API";
+import API from "../utils/API";
 
 class Main extends Component {
     state = {
@@ -13,8 +12,17 @@ class Main extends Component {
       //setState
         //allUsers: []
         //filteredUsers: []
+    componentDidMount() {
+        this.searchAPI("Bryant");
+    }
 
     //searchAPI
+    searchAPI = query => {
+        API.getUsers(query)
+            .then(res => this.setState({ allUsers: res.data }))
+            .catch(err => console.log(err));
+    }
+
 
     //handleInput change (filter employees )
         //change(setState) searchTerm
@@ -30,7 +38,7 @@ class Main extends Component {
 
     render () {
         return (
-            <div>{this.state.result}</div>
+            <div>{this.state.allUsers}</div>
         )
     }
 }

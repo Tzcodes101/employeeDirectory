@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "./App.css";
 import API from "./utils/API";
+import Main from "./components/Main";
 
 function FormInput() {
   return <div>form input</div>
@@ -37,8 +37,7 @@ class App extends Component {
   render () {
   return (
     <div className="App">
-      <FormInput />
-      <UsersView />
+      <Main />
     </div>
     
   )};
