@@ -1,18 +1,19 @@
 import React, { Component } from "react";
 import "./App.css";
+import API from "./utils/API";
 
 function FormInput() {
   return <div>form input</div>
 }
 
-function UsersView(props) {
+function UsersView() {
   //props: users (filteredUsers)
   //button to filter by name
     //onClick => this.sortUsers
   return <div>users view</div>
 }
 
-class App extends Component () {
+class App extends Component {
   state = {
     allUsers: [],
     filteredUsers: [],
