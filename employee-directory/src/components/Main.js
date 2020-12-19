@@ -3,8 +3,8 @@ import API from "../utils/API";
 
 class Main extends Component {
     state = {
-        allUsers: [],
-        filteredUsers: [],
+        allUsers: [{}],
+        filteredUsers: [{}],
         searchTerm: ""
       }
 
@@ -13,15 +13,21 @@ class Main extends Component {
         //allUsers: []
         //filteredUsers: []
     componentDidMount() {
-        this.searchAPI("Bryant");
+        API.getUsers().then(results => {
+            this.setState({
+                allUsers: results.data.results,
+                filteredUsers: results.data.results
+            });
+        });
+        // this.searchAPI("Bryant");
     }
 
     //searchAPI
-    searchAPI = query => {
-        API.getUsers(query)
-            .then(res => this.setState({ allUsers: res.data }))
-            .catch(err => console.log(err));
-    }
+    // searchAPI = query => {
+    //     API.getUsers(query)
+    //         .then(res => this.setState({ allUsers: res.data }))
+    //         .catch(err => console.log(err));
+    // }
 
 
     //handleInput change (filter employees )
@@ -38,7 +44,7 @@ class Main extends Component {
 
     render () {
         return (
-            <div>{this.state.allUsers}</div>
+            <DataArea />
         )
     }
 }
