@@ -42,11 +42,8 @@ class Main extends Component {
       //prevent default
       //this.state.search for searchAPI
 
-    render () {
-        return (
-            <DataArea />
-        )
-    }
+    
+    
 }
 
 export default Main;
