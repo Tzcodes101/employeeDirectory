@@ -48,7 +48,7 @@ class App extends React.Component {
     return (
       <div className="App">
 
-
+        <Header />
         <FormInput handleInputChange={this.handleInputChange}/>
         <UsersView employees={this.state.allUsers} />
 
