@@ -1,31 +1,21 @@
-import React from "react";
-
-import Nav from "./components/Nav";
-import GetData from "./components/GetData";
+import React from "react"; 
 import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      {/* <Nav /> */}
-      <GetData />
-    </div>
-    
-  )
-};
-
-// function FormInput() {
-//   return <div>form input</div>
-// }
+function UsersView() {
+  return <div>users view</div>
+}
 
 
+function FormInput() {
+  return <div>form input</div>
+}
 
-// class App extends Component {
-//   state = {
-//     allUsers: [],
-//     filteredUsers: [],
-//     searchTerm: ""
-//   }
+class App extends Component {
+  state = {
+    allUsers: [],
+    filteredUsers: [],
+    searchTerm: ""
+  }
 
 //   //compnentDidMount
 //   //call API from utils
@@ -50,19 +40,19 @@ function App() {
 //   //sortUsers
 //   //using js sort (by string, or number (DOB))
 
-//   render() {
-//     return (
-//       <div className="App">
+  render() {
+    return (
+      <div className="App">
 
-//         <FormInput />
-//         <UsersView 
+        <FormInput />
+        <UsersView 
           
-//         />
+        />
 
-//       </div>
+      </div>
 
-//     )
-//   };
-// }
+    )
+  };
+}
 
 export default App;
