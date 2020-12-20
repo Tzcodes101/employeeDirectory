@@ -1,5 +1,8 @@
 import React from "react";
 import API from "./utils/API";
+import Header from "./components/Header";
+import UsersView from "./components/UsersView";
+import FormInput from "./components/FormInput";
 import "./App.css";
 
 // function UsersView() {
