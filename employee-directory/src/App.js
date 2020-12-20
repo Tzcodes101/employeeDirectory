@@ -1,4 +1,4 @@
-import React from "react"; 
+import React from "react";
 import "./App.css";
 
 function UsersView() {
@@ -10,49 +10,46 @@ function FormInput() {
   return <div>form input</div>
 }
 
-class App extends Component {
+class App extends React.Component {
   state = {
     allUsers: [],
     filteredUsers: [],
     searchTerm: ""
   }
 
-//   //compnentDidMount
-//   //call API from utils
-//   //setState
-//   //allUsers: [],
-//   //filteredUsers: []
-//   componentDidMount() {
-//     API.getUsers().then(results => {
-//         this.setState({
-//             allUsers: results.data,
-//             filteredUsers: results.data
-//         });
-//     });
-//     // this.searchAPI("Bryant");
-// }
+  //compnentDidMount
+    //call API from utils
+    //setState of allUsers to result
+  componentDidMount() {
+    API.getUsers().then(employees => {
+      this.setState({
+        allUsers: employees.data.results
+      });
+    });
+  }
+  
 
-//   //handleInputChange
-//   //change(setState) searchTerm
-//   //filter users based on searchTerm
-//   //sort if relevant
+    //   //handleInputChange
+    //   //change(setState) searchTerm
+    //   //filter users based on searchTerm
+    //   //sort if relevant
 
-//   //sortUsers
-//   //using js sort (by string, or number (DOB))
+    //   //sortUsers
+    //   //using js sort (by string, or number (DOB))
 
-  render() {
-    return (
-      <div className="App">
+    render() {
+      return (
+        <div className="App">
 
-        <FormInput />
-        <UsersView 
-          
-        />
+          <FormInput />
+          <UsersView
 
-      </div>
+          />
 
-    )
-  };
-}
+        </div>
 
-export default App;
+      )
+    };
+  }
+
+  export default App;
