@@ -6,6 +6,9 @@ function RenderEmployees(props) {
         <>
         {props.employees.map((employee, index) => {
             return (
+                //create table head
+
+                //create table body
                <div key={index}>
                    <div className="img-container">
                        <img alt={employee.name.first} src={employee.picture.thumbnail}/>
