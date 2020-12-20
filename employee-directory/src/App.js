@@ -1,14 +1,14 @@
 import React from "react";
-import Wrapper from "./components/Wrapper";
+
 import Nav from "./components/Nav";
-import Main from "./components/Main";
+import UsersView from "./components/UsersView";
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <Nav />
-      <Main />
+      {/* <Nav /> */}
+      <UsersView />
     </div>
     
   )
@@ -18,12 +18,7 @@ function App() {
 //   return <div>form input</div>
 // }
 
-// function UsersView(props) {
-//   //props: users (filteredUsers)
-//   //button to filter by name
-//   //onClick => this.sortUsers
-//   return <div>{props}</div>
-// }
+
 
 // class App extends Component {
 //   state = {
