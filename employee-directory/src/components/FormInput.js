@@ -5,16 +5,14 @@ function FormInput(props) {
     //form to search
     return (
         <div>
-            <form className="form">
+            <form className="form-group">
+                <label htmlFor="search">Search:</label>
                 <input
-                    value={props.firstName}
+                    onChange={props.handleInputChange}
+                    value={props.search}
                     type="text"
-                    placeholder="First Name"
-                />
-                <input
-                    value={props.lastName}
-                    type="text"
-                    placeholder="Last Name"
+                    className="form-control"
+                    placeholder="NAme"
                 />
                 <button onClick={props.handleFormSubmit}>Submit</button>
             </form>

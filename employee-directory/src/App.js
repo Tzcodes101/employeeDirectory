@@ -18,7 +18,7 @@ class App extends React.Component {
   state = {
     allUsers: [],
     filteredUsers: [],
-    searchTerm: ""
+    search: ""
   }
 
   //compnentDidMount
@@ -31,6 +31,12 @@ class App extends React.Component {
       });
     });
   }
+
+  searchAPI = query => {
+    API.getUsers(query)
+      .then(res => this.setState({ allUsers: results.data.results }))
+      .catch(err => console.log(err));
+  };
 
 
   //handleInputChange
@@ -46,6 +52,12 @@ class App extends React.Component {
     })
   }
 
+  //handleFormsubmit
+  handleFormSubmit = event => {
+    event.preventDefault();
+    this.searchAPI(this.state.search);
+  };
+
 
 
   render() {
@@ -53,7 +65,11 @@ class App extends React.Component {
       <div className="App">
 
         <Header />
-        <FormInput handleInputChange={this.handleInputChange}/>
+        <FormInput 
+          search={this.state.search}
+          handleFormSubmit={this.handleFormSubmit} 
+          handleInputChange={this.handleInputChange}
+        />
         <UsersView employees={this.state.allUsers} />
 
       </div>
