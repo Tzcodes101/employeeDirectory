@@ -8,25 +8,78 @@ class DataArea extends React.Component {
   constructor() {
     super();
     //set state
+    this.state = {
+      users: [{}],
+      filteredUsers: [{}]
+    }
 
     //handleInputChange
+    handleInputChange = event => {
+      const name = event.target.name;
+      const value = event.target.value;
+      console.log(name);
+      console.log(value);
+      this.setState({
+        [name]: value
+      });
+    }
 
-    //componentDidMount
+    //handleFilter
+    handleFilter = event => {
+      const filter = event.target.value;
+      const filteredEmp = this.state.users.filter(item => {
+        let values = Object.values(item)
+          .join("")
+          .toLowerCase();
+        return values.indexOf(filter.toLowerCase()) !== -1;
+      });
+      this.setState({ filteredUsers: filteredList });
+    }
+  };
 
-    //render
+
+  //componentDidMount
+  componentDidMount() {
+    API.getUsers().then(results => {
+      this.setState({
+        users: results.data.results,
+        filteredUsers: results.data.results
+      });
+    });
   }
 
+  //render
+  render() {
+    return (
+      <div>
+         <Nav handleInputChange={this.state.handleInputChange} />
+        <div className="data-area">
+          <DataTable
+            users={this.state.filteredUsers}
+            handleFilter={this.state.handleFilter}
+          />
+        </div>
+      </div>
+    );
+  }
 }
+
+
+
+
+
+
+
 
 export default DataArea;
 
 //set state
 const DataArea = () => {
-    state = {
-        allUsers: [{}],
-        filteredUsers: [{}],
-        searchTerm: ""
-      }
+  state = {
+    allUsers: [{}],
+    filteredUsers: [{}],
+    searchTerm: ""
+  }
 }
 
 //sortUsers 
