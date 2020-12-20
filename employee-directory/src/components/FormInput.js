@@ -14,8 +14,11 @@ function FormInput(props) {
                     type="text"
                     className="form-control"
                     placeholder="Name"
+                    id="search"
                 />
-                <button onClick={props.handleFormSubmit}>Submit</button>
+                <button onClick={props.handleFormSubmit} className="btn btn-dark mt-3">
+                    Search
+                </button>
             </form>
         </div>
     );
