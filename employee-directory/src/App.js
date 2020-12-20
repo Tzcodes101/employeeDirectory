@@ -1,14 +1,14 @@
 import React from "react";
 
 import Nav from "./components/Nav";
-import UsersView from "./components/UsersView";
+import GetData from "./components/GetData";
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
       {/* <Nav /> */}
-      <UsersView />
+      <GetData />
     </div>
     
   )
