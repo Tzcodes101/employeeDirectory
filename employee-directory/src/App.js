@@ -34,7 +34,7 @@ class App extends React.Component {
 
   searchAPI = query => {
     API.getUsers(query)
-      .then(res => this.setState({ allUsers: results.data.results }))
+      .then(res => this.setState({ allUsers: res.data.results }))
       .catch(err => console.log(err));
   };
 

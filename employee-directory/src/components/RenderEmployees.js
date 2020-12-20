@@ -23,7 +23,6 @@ function RenderEmployees(props) {
                            </li>
                        </ul>
                    </div>
-                   <span classNAme="remove">x</span>
                </div>
             )
         })}

@@ -10,9 +10,10 @@ function FormInput(props) {
                 <input
                     onChange={props.handleInputChange}
                     value={props.search}
+                    name="search"
                     type="text"
                     className="form-control"
-                    placeholder="NAme"
+                    placeholder="Name"
                 />
                 <button onClick={props.handleFormSubmit}>Submit</button>
             </form>
