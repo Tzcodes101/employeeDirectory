@@ -3,6 +3,7 @@ import API from "./utils/API";
 import Header from "./components/Header";
 import UsersView from "./components/UsersView";
 import FormInput from "./components/FormInput";
+
 import "./App.css";
 
 // function UsersView() {
@@ -46,17 +47,21 @@ class App extends React.Component {
   //sort if relevant
   handleInputChange = event => {
     let value = event.target.value;
-    const name = event.target.name;
+    // const search = event.target.name;
+    // console.log(value);
+    // console.log(search);
     this.setState({
-      [name]: value
-    })
+      search: value
+    });
   }
 
   //handleFormsubmit
   handleFormSubmit = event => {
     event.preventDefault();
-    this.searchAPI(this.state.search);
+    // this.searchAPI(this.state.search)
+    API.getUsers(this.state.search);
   };
+  
 
 
 
