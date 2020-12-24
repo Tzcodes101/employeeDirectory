@@ -34,7 +34,7 @@ function RenderEmployees(props) {
                                     {employee.cell}
                                 </td>
                                 <td className="DOB">
-                                    {employee.dob.date}
+                                    {employee.dob.age}
                                 </td>
                             </tr>
                         )

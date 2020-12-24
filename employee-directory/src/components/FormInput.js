@@ -8,7 +8,7 @@ function FormInput(props) {
             <form className="form-group">
                 <label htmlFor="search">Search:</label>
                 <input
-                    onChange={props.handleInputChange}
+                    onChange={event => props.handleInputChange(event)}
                     value={props.search}
                     name="search"
                     type="text"
@@ -16,9 +16,9 @@ function FormInput(props) {
                     placeholder="Name"
                     id="search"
                 />
-                <button onClick={props.handleFormSubmit} className="btn btn-dark mt-3">
+                {/* <button onClick={event => props.handleFormSubmit(event)} className="btn btn-dark mt-3">
                     Search
-                </button>
+                </button> */}
             </form>
         </div>
     );

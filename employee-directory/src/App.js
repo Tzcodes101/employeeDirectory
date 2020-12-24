@@ -28,16 +28,31 @@ class App extends React.Component {
   componentDidMount() {
     API.getUsers().then(employees => {
       this.setState({
-        allUsers: employees.data.results
+        allUsers: employees.data.results,
+        filteredUsers: employees.data.results
       });
     });
   }
 
-  searchAPI = query => {
-    API.getUsers(query)
-      .then(res => this.setState({ allUsers: res.data.results }))
-      .catch(err => console.log(err));
-  };
+  // searchAPI = query => {
+  //   API.getUsers(query)
+  //     .then(res => this.setState({ allUsers: res.data.results }))
+  //     .catch(err => console.log(err));
+  // };
+
+  handleInputChange = event => {
+    this.setState({
+      search: event.target.value
+    });
+    let searchedUser = event.target.value;
+    const searchedUsers = this.state.filteredUsers.filter(user => {
+      let data = user.name.first + user.name.last + user.email + user.cell + user.dob.age;
+      return data.indexOf(searchedUser) !== -1;
+    });
+    this.setState({
+      filteredUsers: searchedUsers
+    })
+  }
 
 
   //handleInputChange
@@ -45,22 +60,36 @@ class App extends React.Component {
   //change(setState) searchTerm
   //filter users based on searchTerm
   //sort if relevant
-  handleInputChange = event => {
-    let value = event.target.value;
-    // const search = event.target.name;
-    // console.log(value);
-    // console.log(search);
-    this.setState({
-      search: value
-    });
-  }
+  // handleInputChange = event => {
+  //   let value = event.target.value;
+  //   // const search = event.target.name;
+  //   console.log(value);
+  //   // console.log(search);
+  //   // this.setState({
+  //   //   search: value
+  //   // });
+  //   const users = (this.state.allUsers.filter(searchedUser => {
+  //     const firstName = searchedUser.name.first;
+  //     const stringFirstName = JSON.stringify(firstName)
+  //     console.log(stringFirstName)
+  //     return firstName.indexOf(value !== -1)
+  //   })
+  //   )
+  //   this.setState({ filteredUsers: users })
+  //   console.log(users)
+  // }
+  //searchedUser is an object, to use indexOf, needs to be a string or an array.
+  //json.stringify or look in stackoverflow from tutoring session (object.entries or number 22)
 
-  //handleFormsubmit
-  handleFormSubmit = event => {
-    event.preventDefault();
-    // this.searchAPI(this.state.search)
-    API.getUsers(this.state.search);
-  };
+  // //handleFormsubmit
+  // handleFormSubmit = event => {
+  //   event.preventDefault();
+  //   console.log(event.target.value);
+  //   console.log(event);
+  //   console.log(event.target);
+  //   // this.searchAPI(this.state.search)
+  //   // API.getUsers(this.state.search);
+  // };
   
 
 
@@ -71,11 +100,11 @@ class App extends React.Component {
 
         <Header />
         <FormInput 
-          search={this.state.search}
-          handleFormSubmit={this.handleFormSubmit} 
+          // search={this.state.search}
+          // handleFormSubmit={this.handleFormSubmit} 
           handleInputChange={this.handleInputChange}
         />
-        <UsersView employees={this.state.allUsers} />
+        <UsersView employees={this.state.filteredUsers} />
 
       </div>
 
