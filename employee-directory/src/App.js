@@ -45,7 +45,7 @@ class App extends React.Component {
       search: event.target.value
     });
     let searchedUser = event.target.value;
-    const searchedUsers = this.state.filteredUsers.filter(user => {
+    const searchedUsers = this.state.allUsers.filter(user => {
       let data = user.name.first + user.name.last + user.email + user.cell + user.dob.age;
       return data.indexOf(searchedUser) !== -1;
     });
