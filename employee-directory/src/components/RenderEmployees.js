@@ -9,7 +9,7 @@ function RenderEmployees(props) {
                 <thead>
                     <tr>
                         <th className="col">Image</th>
-                        <th className="col">Name</th>
+                        <th className="col">Name <button>Filter</button></th>
                         <th className="col">Email</th>
                         <th className="col">Phone</th>
                         <th className="col">DOB</th>
