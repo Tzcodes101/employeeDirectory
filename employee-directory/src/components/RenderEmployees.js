@@ -1,4 +1,5 @@
 import React from "react";
+import App from "../App";
 
 function RenderEmployees(props) {
     //render employees in a table
