@@ -1,8 +1,39 @@
 import React from "react";
-import App from "../App";
+
 
 function RenderEmployees(props) {
     //render employees in a table
+//   function sortEmployees(e) {
+//   console.log("clicked")
+//   //if not alphabetical (state) to true, then make alphabetical, if not true, do not make alph.
+//   let sortedEmployees = [];
+//   let alphabetical = true;
+//   if (alphabetical) {
+//     sortedEmployees = props.employees.sort((a, b) => {
+//       let nameA = a.name.last.toLowerCase(), nameB = b.name.last.toLowerCase();
+//       if (nameA < nameB) 
+//         return -1;
+//       if (nameA > nameB)
+//         return 1
+//       return 0;
+//     })
+//   } else {
+//     sortedEmployees = props.employees.sort((a, b) => {
+//       let nameA = a.name.las.toLowerCase(), nameB = b.name.last.toLowerCase();
+//       if (nameA < nameB)
+//         return 1
+//       if (nameA > nameB)
+//         return -1
+//       return 0
+//     })
+//   console.log(sortedEmployees)
+//     // this.setState({
+//     //   alphabetical: !this.state.alphabetical,
+//     //   filteredEmployees: sortedEmployees
+//     // })
+//   }
+// }
+   
     return (
 
         <div className="data-table">
@@ -10,7 +41,7 @@ function RenderEmployees(props) {
                 <thead>
                     <tr>
                         <th className="col">Image</th>
-                        <th className="col">Name <button>Filter</button></th>
+                        <th className="col">Name <button>Filter </button></th>
                         <th className="col">Email</th>
                         <th className="col">Phone</th>
                         <th className="col">DOB</th>

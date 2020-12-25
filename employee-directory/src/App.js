@@ -46,34 +46,34 @@ class App extends React.Component {
 
 
 // //when last name is clicked, want to sort alphabetically
-sortEmployees = () => {
-  //if not alphabetical (state) to true, then make alphabetical, if not true, do not make alph.
-  let sortedEmployees = [];
-  if (this.state.alphabetical) {
-    sortedEmployees = this.state.allUsers.sort((a, b) => {
-      let nameA = a.name.last.toLowerCase(), nameB = b.name.last.toLowerCase();
-      if (nameA < nameB) 
-        return -1;
-      if (nameA > nameB)
-        return 1
-      return 0;
-    })
-  } else {
-    sortedEmployees = this.state.allUsers.sort((a, b) => {
-      let nameA = a.name.las.toLowerCase(), nameB = b.name.last.toLowerCase();
-      if (nameA < nameB)
-        return 1
-      if (nameA > nameB)
-        return -1
-      return 0
-    })
+// sortEmployees = () => {
+//   //if not alphabetical (state) to true, then make alphabetical, if not true, do not make alph.
+//   let sortedEmployees = [];
+//   if (this.state.alphabetical) {
+//     sortedEmployees = this.state.allUsers.sort((a, b) => {
+//       let nameA = a.name.last.toLowerCase(), nameB = b.name.last.toLowerCase();
+//       if (nameA < nameB) 
+//         return -1;
+//       if (nameA > nameB)
+//         return 1
+//       return 0;
+//     })
+//   } else {
+//     sortedEmployees = this.state.allUsers.sort((a, b) => {
+//       let nameA = a.name.las.toLowerCase(), nameB = b.name.last.toLowerCase();
+//       if (nameA < nameB)
+//         return 1
+//       if (nameA > nameB)
+//         return -1
+//       return 0
+//     })
     
-    this.setState({
-      alphabetical: !this.state.alphabetical,
-      filteredEmployees: sortedEmployees
-    })
-  }
-}
+//     this.setState({
+//       alphabetical: !this.state.alphabetical,
+//       filteredEmployees: sortedEmployees
+//     })
+//   }
+// }
 
   // //handleFormsubmit
   // handleFormSubmit = event => {
@@ -91,6 +91,7 @@ sortEmployees = () => {
       <div className="App">
 
         <Header />
+        <Sort sortEmployees={this.state.sortEmployees} />
         <FormInput 
           // search={this.state.search}
           // handleFormSubmit={this.handleFormSubmit} 
