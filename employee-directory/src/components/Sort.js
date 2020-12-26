@@ -4,7 +4,7 @@ import React from "react";
 function Sort(props) {
     return (
         <div>
-            <button onClick={props.sortEmployees}>Filter by Name</button>
+            <button onClick={props.sortEmployees}>Sort by Name</button>
         </div>
         
     )
