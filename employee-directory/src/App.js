@@ -3,6 +3,7 @@ import API from "./utils/API";
 import Header from "./components/Header";
 import UsersView from "./components/UsersView";
 import FormInput from "./components/FormInput";
+import Sort from "./components/Sort";
 
 import "./App.css";
 
@@ -45,35 +46,47 @@ class App extends React.Component {
   }
 
 
-// //when last name is clicked, want to sort alphabetically
-// sortEmployees = () => {
-//   //if not alphabetical (state) to true, then make alphabetical, if not true, do not make alph.
-//   let sortedEmployees = [];
-//   if (this.state.alphabetical) {
-//     sortedEmployees = this.state.allUsers.sort((a, b) => {
-//       let nameA = a.name.last.toLowerCase(), nameB = b.name.last.toLowerCase();
-//       if (nameA < nameB) 
-//         return -1;
-//       if (nameA > nameB)
-//         return 1
-//       return 0;
-//     })
-//   } else {
-//     sortedEmployees = this.state.allUsers.sort((a, b) => {
-//       let nameA = a.name.las.toLowerCase(), nameB = b.name.last.toLowerCase();
-//       if (nameA < nameB)
-//         return 1
-//       if (nameA > nameB)
-//         return -1
-//       return 0
-//     })
-    
-//     this.setState({
-//       alphabetical: !this.state.alphabetical,
-//       filteredEmployees: sortedEmployees
-//     })
-//   }
-// }
+  // //when last name is clicked, want to sort alphabetically
+  sortEmployees = () => {
+    console.log("here");
+    //if not alphabetical (state) to true, then make alphabetical, if not true, do not make alph.
+    let sortedEmployees = [];
+    console.log(sortedEmployees)
+    if (this.state.alphabetical) {
+      sortedEmployees = this.state.allUsers.sort((a, b) => {
+        let nameA = a.name.last.toLowerCase(), nameB = b.name.last.toLowerCase();
+        if (nameA < nameB)
+          return -1;
+        if (nameA > nameB)
+          return 1
+        return 0;
+      })
+    } else {
+      sortedEmployees = this.state.allUsers.sort((a, b) => {
+        let nameA = a.name.last.toLowerCase(), nameB = b.name.last.toLowerCase();
+        if (nameA < nameB)
+          return 1
+        if (nameA > nameB)
+          return -1
+        return 0;
+      })
+    }
+      console.log(sortedEmployees)
+      this.setState({
+        alphabetical: !this.state.alphabetical,
+        filteredUsers: sortedEmployees
+      })
+  }
+
+  // renderSort = () => {
+  //   console.log("clicked")
+  //   if(this.state.filteredUsers.length > 0) {
+  //     // return <Sort sort={this.sortEmployees} />
+  //     this.sortEmployees(this.state.filteredUsers)
+  //   }
+  // }
+
+ 
 
   // //handleFormsubmit
   // handleFormSubmit = event => {
@@ -84,19 +97,20 @@ class App extends React.Component {
   //   // this.searchAPI(this.state.search)
   //   // API.getUsers(this.state.search);
   // };
-  
+
 
   render() {
     return (
       <div className="App">
 
         <Header />
-        <Sort sortEmployees={this.state.sortEmployees} />
-        <FormInput 
+        <FormInput
           // search={this.state.search}
           // handleFormSubmit={this.handleFormSubmit} 
           handleInputChange={this.handleInputChange}
         />
+        {/* <Sort sort={this.renderSort()} /> */}
+        <Sort sortEmployees={this.sortEmployees} />
         <UsersView employees={this.state.filteredUsers} />
 
       </div>
