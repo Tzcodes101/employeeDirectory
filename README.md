@@ -3,7 +3,7 @@
 ![badge](https://img.shields.io/badge/license-ISC-brightgreen)
 
 - Link to GitHub repository: https://github.com/Tzcodes101/employeeDirectory
-- Link to deployed application: https://powerful-savannah-79743.herokuapp.com/
+- Link to deployed application: https://tzcodes101.github.io/employeeDirectory/
 
 ## Description
 This application enables a bussiness to view the entire directory at once, enabling quick access to their information. 
