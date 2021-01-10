@@ -126,7 +126,7 @@ function DataArea() {
     return (
         <DataAreaContext.Provider value={{ userState, handleInputChange, handleOrder }}>
             <FormInput />
-            <div>
+            <div className="data-area mx-auto">
                 {userState.filteredEmployees.length > 0 ? <DataTable /> : <div>No Employees</div>}
             </div>
         </DataAreaContext.Provider>

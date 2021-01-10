@@ -1,12 +1,12 @@
 //use context
 import React, { useContext } from "react";
 import DataBody from "../DataBody";
-import "./style.css";
 import DataAreaContext from "../../utils/DataAreaContext";
+import "./style.css";
 
 
 //DataBody component for table body
-function DataTable() {
+const DataTable = () => {
     const context = useContext(DataAreaContext);
 
     return (
@@ -19,13 +19,14 @@ function DataTable() {
                         {context.userState.headings.map(({ name }) => {
                             return (
                                 <th 
-                                className="col" 
+                                className="table-column" 
                                 key={name}
                                 onClick={() => {
                                     context.handleOrder(name.toLowerCase());
                                 }}
                             >
-                                {name}
+                                {name} 
+                            
                             </th>
                             );
                         })}
