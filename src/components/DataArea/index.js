@@ -100,17 +100,27 @@ function DataArea() {
     //useEffect, getEmployees and set state
     function componentDidMount() {
         API.getUsers().then(results => {
-          setUserState({
-            ...userState,
-            employees: results.data.results,
-            filteredEmployees: results.data.results
-          });
+            setUserState({
+                ...userState,
+                employees: results.data.results,
+                filteredEmployees: results.data.results
+            });
         });
     }
 
     componentDidMount();
 
-    
+    // useEffect(() => {
+    //     API.getUsers().then(results => {
+    //         setUserState({
+    //             ...userState,
+    //             employees: results.data.results,
+    //             filteredEmployees: results.data.results
+    //         });
+    //     });
+    // }, []);
+
+
 
     //retrun dataareacontext.provider with values to pass to the datatable
     return (
