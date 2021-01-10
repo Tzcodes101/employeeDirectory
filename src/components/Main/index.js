@@ -1,0 +1,1 @@
+//render DataArea component
