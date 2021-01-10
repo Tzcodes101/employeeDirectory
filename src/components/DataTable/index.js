@@ -16,9 +16,17 @@ function DataTable() {
             <table id="table" className="table table-striped">
                 <thead>
                     <tr>
-                        {context.userState.headings.map(name => {
+                        {context.userState.headings.map(({ name }) => {
                             return (
-                                <th className="col" key={name}>{name}</th>
+                                <th 
+                                className="col" 
+                                key={name}
+                                onClick={() => {
+                                    context.handleOrder(name.toLowerCase());
+                                }}
+                            >
+                                {name}
+                            </th>
                             );
                         })}
 

@@ -4,12 +4,13 @@ import Header from "../Header";
 import API from "../../utils/API";
 import "./style.css";
 import DataAreaContext from "../../utils/DataAreaContext"
+import FormInput from "../FormInput";
 
 //Set states of employees in directory, set state of headings for table columns
 function DataArea() {
     const [userState, setUserState] = useState({
-        employees: "",
-        filteredEmployees: "",
+        employees: [],
+        filteredEmployees: [],
         alphabetical: true,
         headings: [
             { name: "Image" },
@@ -22,41 +23,68 @@ function DataArea() {
 
 
     //handlsort function, changes the order to the opposite of its current state 
-
-    //order function
-    sortEmployees = () => {
-        console.log("here");
-        let sortedEmployees = [];
+    const handleOrder = heading => {
         if (userState.alphabetical === true) {
-            sortedEmployees = userState.employees.sort((a, b) => {
-                let nameA = a.name.last.toLowerCase(), nameB = b.name.last.toLowerCase();
-                if (nameA < nameB)
-                    return -1;
-                if (nameA > nameB)
-                    return 1
-                return 0;
+            setUserState({
+                alphabetical: false
             })
         } else {
-            sortedEmployees = userState.employees.sort((a, b) => {
-                let nameA = a.name.last.toLowerCase(), nameB = b.name.last.toLowerCase();
-                if (nameA < nameB)
-                    return 1
-                if (nameA > nameB)
-                    return -1
-                return 0;
+            setUserState({
+                alphabetical: true
             })
         }
-        console.log(sortedEmployees)
+
+
+        //order employees alphabetically depending on name
+        //compare a to b, and b to a
+        const compareEmployees = (a, b) => {
+            // if alph. true, then 
+            if (userState.alphabetical === true) {
+                //ensure a heading and b heading are defined, otherwise a will order before b
+                if (a[heading] === undefined) {
+                    return 1;
+
+                } else if (b[heading] === undefined) {
+                    return -1;
+                    //if heading is "name", compare a and b to see which comes first
+                    //if a comes before b, a positive number will be returned
+                } else if (heading === "name") {
+                    return a[heading].first.localeCompare(b[heading].first);
+                } else {
+                    //if a positive number is not returned, this will return a positive number
+                    return b[heading] - a[heading];
+                }
+            } else {
+                //ensure a heading and b heading are defined, otherwise a will order before b
+                if (a[heading] === undefined) {
+                    return 1;
+                } else if (b[heading] === undefined) {
+                    return -1;
+                    //if heading is "name", compare b and a to see which comes first
+                    //if b comes before a, a positive number will be returned
+                } else if (heading === "name") {
+                    return b[heading].first.localeCompare(a[heading].first);
+                    //if a positive number is not returned, this will return a positive number
+                } else {
+                    return a[heading] - b[heading];
+                }
+            }
+        }
+
+        //this sort function will order the employees depending on the positive or negative numbers returned from the compare function
+        const sortedEmployees = userState.filteredEmployees.sort(compareEmployees);
+
         setUserState({
             ...userState,
-            alphabetical: !this.state.alphabetical,
-            filteredUsers: sortedEmployees
-        });
+            filteredEmployees: sortedEmployees
+        })
     };
+
+
 
     //handleInputChange
     //setEmployeeState
-    handleInputChange = event => {
+    const handleInputChange = event => {
         const searchTerm = event.target.value;
         const searchedEmployees = userState.employees.filter(employee => {
             let item = employee.name.first + employee.name.last + employee.email + employee.cell + employee.dob.age;
@@ -69,22 +97,25 @@ function DataArea() {
         });
     }
 
-    //useEffect, getUsers and set users state and filteredUsers state
-    useEffect(() => {
+    //useEffect, getEmployees and set state
+    function componentDidMount() {
         API.getUsers().then(results => {
-            setUserState({
-                ...userState,
-                employees: results.data.results,
-                filteredEmployees: results.data.results
-            })
+          setUserState({
+            ...userState,
+            employees: results.data.results,
+            filteredEmployees: results.data.results
+          });
         });
-    });
+    }
 
+    componentDidMount();
+
+    
 
     //retrun dataareacontext.provider with values to pass to the datatable
     return (
-        <DataAreaContext.Provider value={{ userState, handleInputChange, sortEmployees }}>
-            <Header />
+        <DataAreaContext.Provider value={{ userState, handleInputChange, handleOrder }}>
+            <FormInput />
             <div>
                 {userState.filteredEmployees.length > 0 ? <DataTable /> : <div>No Employees</div>}
             </div>

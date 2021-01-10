@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
+import DataAreaContext from "../utils/DataAreaContext";
 
-function FormInput(props) {
-    console.log(props);
+const FormInput = () => {
+    const context = useContext(DataAreaContext)
     //form to search
     return (
         <div>
             <form className="form-group">
                 <label htmlFor="search">Search:</label>
                 <input
-                    onChange={event => props.handleInputChange(event)}
-                    value={props.search}
+                    onChange={event => context.handleInputChange(event)}
                     name="search"
                     type="text"
                     className="form-control"
