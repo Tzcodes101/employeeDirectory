@@ -82,6 +82,14 @@ function DataArea() {
 
 
     //retrun dataareacontext.provider with values to pass to the datatable
+    return (
+        <DataAreaContext.Provider value={{ userState, handleInputChange, sortEmployees }}>
+            <Header />
+            <div>
+                {userState.filteredEmployees.length > 0 ? <DataTable /> : <div>No Employees</div>}
+            </div>
+        </DataAreaContext.Provider>
+    )
 
 }
 
