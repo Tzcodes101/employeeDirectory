@@ -13,6 +13,7 @@ This application enables a bussiness to view the entire directory at once, enabl
 - [Installation](#Installation)
 - [Usage](#Usage)
 - [License](#License)
+- [Future Development](#FutureDevelopment)
 - [Contributors](#Contributors)
 - [Testing](#Testing)
 - [Questions](#Questions)
@@ -27,6 +28,12 @@ To use this project, a user must navigate to the deployed link.
 ![badge](https://img.shields.io/badge/license-ISC-brightgreen)
 
 This project is covered by the ISC license.
+
+## Future Development
+- Additional styling for a more pleasant user experience.
+- The ability to determine where a user is supposed to click to sort employees alphabetically.
+- The ability to res-set the alphabetical order from a to z instead of z to a.
+- The page to re-render with the search term only when the user has completed typing.
 
 ## Contributors
 - Talia Zisman
