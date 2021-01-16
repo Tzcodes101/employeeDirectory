@@ -97,28 +97,23 @@ function DataArea() {
         });
     }
 
-    //useEffect, getEmployees and set state
-    function componentDidMount() {
+
+
+    useEffect(() => {
         API.getUsers().then(results => {
             setUserState({
-                ...userState,
                 employees: results.data.results,
-                filteredEmployees: results.data.results
+                filteredEmployees: results.data.results,
+                headings: [
+                    { name: "Image" },
+                    { name: "Name" },
+                    { name: "Phone" },
+                    { name: "Email" },
+                    { name: "DOB" }
+                ]
             });
         });
-    }
-
-    componentDidMount();
-
-    // useEffect(() => {
-    //     API.getUsers().then(results => {
-    //         setUserState({
-    //             ...userState,
-    //             employees: results.data.results,
-    //             filteredEmployees: results.data.results
-    //         });
-    //     });
-    // }, []);
+    }, []);
 
 
 
@@ -127,7 +122,7 @@ function DataArea() {
         <DataAreaContext.Provider value={{ userState, handleInputChange, handleOrder }}>
             <FormInput />
             <div className="data-area mx-auto">
-                {userState.filteredEmployees.length > 0 ? <DataTable /> : <div>No Employees</div>}
+                {userState.filteredEmployees.length > 0 ? <DataTable /> : <div className="null-results">No Employees</div>}
             </div>
         </DataAreaContext.Provider>
     )
