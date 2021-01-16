@@ -18,11 +18,11 @@ function DataBody() {
                         <td className="employee-name">
                             {name.first} {name.last}
                         </td>
+                        <td className="phone">
+                            {phone}
+                        </td>
                         <td className="email">
                             {email}
-                        </td>
-                        <td className="phone">
-                            {phone.cell}
                         </td>
                         <td className="DOB">
                             {dob.age}
