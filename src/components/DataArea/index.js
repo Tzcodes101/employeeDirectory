@@ -17,7 +17,7 @@ function DataArea() {
             { name: "Name" },
             { name: "Phone" },
             { name: "Email" },
-            { name: "DOB" }
+            { name: "Age" }
         ]
     });
 
@@ -109,7 +109,7 @@ function DataArea() {
                     { name: "Name" },
                     { name: "Phone" },
                     { name: "Email" },
-                    { name: "DOB" }
+                    { name: "Age" }
                 ]
             });
         });
